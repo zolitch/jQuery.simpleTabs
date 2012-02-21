@@ -1,0 +1,154 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 no-js"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	<title>jQuery.simpleTabs demo</title>
+    <style type="text/css">
+		body{
+			font-family: Arial, Helvetica, "Nimbus Sans L", "Free Sans", Sans-Serif;
+			color:#555;
+			font-size: 12px; /*12px*/
+			padding:16px;
+		}
+		p{font-size:12px;}
+		pre{
+			background:#ddd;
+			padding:16px;
+			text-align:left;
+			font-size:1.2em;
+		}
+		.tabs{
+			width:400px;
+		}
+			.tabs ul{
+				margin:0;
+				padding:0;
+				list-style:none;
+				background:#5BAFDF;
+				display:block;
+
+			}
+				.tabs ul li{
+					width:49.5%;
+					display: -moz-inline-stack;
+					display:inline-block;
+					zoom:1;
+					*display:inline;
+					
+				}
+					.tabs ul li a{
+						height:24px;
+						padding:4px 8px;
+						text-decoration:none;
+						display:block;
+						color:#fff;
+					}
+					.tabs ul li a:hover,
+					.tabs ul li.simpleTabs-on a{
+						background:#274154;
+					}
+			.tab-content{
+				padding:32px;
+				background:#aaa;
+			}
+		
+		.docs{
+			clear:both;
+			width:40%;
+		}
+        .contentWrapper {
+            position: relative;
+			margin:20px 20px;
+        }
+		.gallerysmallwidth{
+			/*width:400px;*/
+			float:left;
+		}
+    </style>
+    <script src="lib/jquery-1.6.2.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+	<div id="container">
+		<div class="header">
+			<header>
+				<h1>Simple tabs<h1>
+			</header>
+		</div>
+		<h2>Examples:</h2>
+		<div class="contentWrapper">
+		
+			<div class="tabs">
+				<ul>
+					<li>
+						<a href="#container1" title="">Tab 1</a>
+					</li>
+					<li>
+						<a href="#container2" title="">Tab 2</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="container1">
+					container 1
+					<ul>
+						<li>Test list item 1</li>
+						<li>Test list item 2</li>
+					</ul>
+				</div>
+				<div class="tab-content" id="container2">
+					container 2
+				</div>
+			</div>	
+
+			
+			<div class="docs">
+				
+				<h2>
+					Simple Tabs options and their defaults.
+				</h2>
+				<h3>Requirements:</h3>
+					<ul>
+						<li>
+							jQuery v1.4.2 or later: <a href="http://docs.jquery.com/Downloading_jQuery#Download_jQuery">http://docs.jquery.com/Downloading_jQuery#Download_jQuery</a>
+							
+						</li>
+					</ul>
+					
+				<h3>
+					Usage:
+				</h3>
+				<p>
+					Initiate the plugin with the call below and use the markup in this demo.
+					
+				</p>
+				
+				<pre>
+$(function(){
+	$('#targetElement').simpleTabs({});
+});
+				</pre>
+				<h3>Options:</h3>
+				<pre>
+					
+{
+    onClass: 'simpleTabs-on',
+    speed: 500
+}
+					
+				</pre>
+				
+			</div>
+		</div>
+	</div>
+
+
+    <script src="jquery.simpleTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+		$ = jQuery.noConflict();
+        $(function(){
+                $('.tabs').simpleTabs();
+        });
+    </script>
+  </body>
+</html>
