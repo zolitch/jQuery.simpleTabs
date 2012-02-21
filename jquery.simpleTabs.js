@@ -29,34 +29,28 @@
                 $containers = $simpleTabs.find('>div'),
 
                 showItem = function($item){
-                    $item.siblings('div').fadeOut('fast');
-                    $item.show().fadeIn('fast');
+                    $item.siblings('div').hide();
+                    $item.show().show();
+                },
+                initTabs = function(){
+                    var $firstLink = $simpleTabs.find('li:first-child a'),
+                        $firstContainer = $($firstLink.attr('href'));
+                        $firstLink.closest('li').addClass(settings.onClass);
+                        showItem($firstContainer);
                 };
+
             
             $tabs.find('a').click(function(e){
                 var $this = $(this),
-                    containerId = $($this.attr('href'));
+                    $container = $($this.attr('href'));
 
                 $this.closest('li').siblings().removeClass(settings.onClass);
                 $this.closest('li').addClass(settings.onClass);
-                showItem($(containerId));
+                showItem($container);
                 e.preventDefault();
             });
 
-
-            /*
-            $simpleTabs.on('click', 'a', function(e){
-                var $this = $(this),
-                    $page = $($this.attr('href')),
-                    left = $page.position().left,
-                    $window = $page.closest(settings.window)
-                ;
-                $items.removeClass(settings.onClass);
-                $this.closest('li').addClass(settings.onClass);
-                $window.animate({ scrollLeft: left }, settings.speed);
-                e.preventDefault();
-            });
-            */
+            initTabs();
         });
     };
 
