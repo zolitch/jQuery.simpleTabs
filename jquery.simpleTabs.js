@@ -7,7 +7,7 @@
 
 
 */
-/*jslint browser: true, vars: true, white: false, forin: true */
+/*jslint browser: true, vars: true, white: true, forin: true */
 /*global define,require */
 (function($){
     'use strict';
@@ -15,7 +15,8 @@
     $.simpleTabs = {
         defaults: {
             onClass: 'simpleTabs-on',
-            speed: 500
+            window: '.simpleTabs-contentWrap',
+            animationSpeed: null
         }
     };
 
@@ -29,8 +30,12 @@
                 $containers = $simpleTabs.find('>div'),
 
                 showItem = function($item){
-                    $item.siblings('div').hide();
-                    $item.show().show();
+                    if (settings.animationSpeed){
+                        $item.siblings('div').fadeOut(settings.animationSpeed);
+                    }else{
+                        $item.siblings('div').hide();
+                    }
+                    $item.show().fadeIn();
                 },
                 initTabs = function(){
                     var $firstLink = $simpleTabs.find('li:first-child a'),
@@ -41,12 +46,20 @@
 
             
             $tabs.find('a').click(function(e){
-                var $this = $(this),
-                    $container = $($this.attr('href'));
 
+                var $this = $(this),
+                    $page = $($this.attr('href'));
                 $this.closest('li').siblings().removeClass(settings.onClass);
                 $this.closest('li').addClass(settings.onClass);
-                showItem($container);
+
+
+                if (settings.animationSpeed){
+                    $page.siblings('div').fadeOut(settings.animationSpeed);
+                    $page.fadeIn(settings.animationSpeed);
+                }else{
+                    $page.siblings('div').hide();
+                    $page.show();
+                }
                 e.preventDefault();
             });
 
